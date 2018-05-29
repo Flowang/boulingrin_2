@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 use App\Role;
 use App\User;
 use App\Fiche;
+use Image;
+
+
+
 class FicheController extends Controller
 {
     public function index(Request $request)
@@ -54,11 +58,28 @@ class FicheController extends Controller
         $data = $this->validate($request, [
             'title'=>'required',
             'description'=>'required',
+            'img'=> 'nullable',
 
         ]);
         $data['id'] = $id;
 
-        $fiches->updateFiche($data);
+        $fiches = $fiches->find($data['id']);
+        $fiches->user_id = auth()->user()->id;
+        $fiches->description = $data['description'];
+        $fiches->title = $data['title'];
+
+     if ($request->hasFile('featured_image')) {
+                $img = $request->file('featured_image');
+                $filename =  time() . '.' . $img->getClientOriginalExtension();
+                $location = public_path('img/' . $filename);
+                Image::make($img)->resize(800, 400)->save($location);
+
+                $filename = ('../img/') . $filename;
+                $fiches->img = $filename;
+            }
+
+        $fiches->save();
+
         return redirect('/fiches')->with('success', 'Fiche modifié avec succès');
     }
         ######################    ######################    ######################    ######################    ######################    ######################

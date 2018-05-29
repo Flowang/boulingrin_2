@@ -27,9 +27,9 @@
             <textarea cols="5" rows="5" class="form-control" name="description">{{$fiches->description}}</textarea>
         </div>
 
-   <div class="card-body">
-        <h5> <label for="description">Description du commerce:</label></h5>
-            <input type="file" class="form-control" name="img" value="img" />
+     <div class="card-body">
+        <h5> {{ Form::label('featured_image', 'Description du commerce' )}}
+              {{ Form::file('featured_image') }}
     </div>
 
         <button type="submit" class="btn btn-primary">Update</button>
