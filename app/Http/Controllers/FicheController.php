@@ -11,10 +11,14 @@ class FicheController extends Controller
         $fiches = Fiche::where('user_id', auth()->user()->id)->get();
         return view('profile.fiche.index',compact('fiches'));
     }
+    ######################    ######################    ######################    ######################    ######################    ######################
+
     public function create()
     {
            return view('profile/fiche/create');
     }
+    ######################    ######################    ######################    ######################    ######################    ######################
+
     public function store(Request $request)
     {
         $fiches = Fiche::create($request->all());
@@ -23,14 +27,18 @@ class FicheController extends Controller
             'description'=>'required',
             
         ]);
-       
+
         $fiche->saveFiche($data);
         return redirect('fiches')->with('success', 'Nouvelle fiche crée !');
     }
+        ######################    ######################    ######################    ######################    ######################    ######################
+
     public function show($id)
     {
         //
     }
+        ######################    ######################    ######################    ######################    ######################    ######################
+
     public function edit($id)
     {       
     $fiches = Fiche::where('user_id', auth()->user()->id)
@@ -38,6 +46,8 @@ class FicheController extends Controller
                         ->first();
         return view('profile.fiche.edit', compact('fiches','id'));
     }
+        ######################    ######################    ######################    ######################    ######################    ######################
+
     public function update(Request $request, $id)
     {
          $fiches = new Fiche();
@@ -51,6 +61,8 @@ class FicheController extends Controller
         $fiches->updateFiche($data);
         return redirect('/fiches')->with('success', 'Fiche modifié avec succès');
     }
+        ######################    ######################    ######################    ######################    ######################    ######################
+
     public function destroy($id)
     {
         $fiches = Fiche::find($id);

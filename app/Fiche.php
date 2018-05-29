@@ -27,9 +27,24 @@ public function updateFiche($data)
         $fiches->user_id = auth()->user()->id;
         $fiches->description = $data['description'];
         $fiches->title = $data['title'];
-
         $fiches->save();
         return 1;
+
+
+
+        //     if ($request->hasFile('featured_image')) {
+        //         $image = $request->file('featured_image');
+        //         $filename =  time() . '.' . $image->getClientOriginalExtension();
+        //         $location = public_path('images/' . $filename);
+        //         Image::make($image)->resize(800, 400)->save($location);
+
+        //         $filename = ('../images/') . $filename;
+        //         $event->image = $filename;
+        //     }
+
+
+
+
 }
 
 
