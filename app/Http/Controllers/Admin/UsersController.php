@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use Gate;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -20,6 +21,10 @@ class UsersController extends Controller
         } else {
             $users = User::paginate($perPage);
         }
+
+        if(!Gate::allows('isAdmin')){
+            abort(404,"Sorry, You can do this actions");
+        }
         return view('admin.users.index', compact('users'));
     }
 
@@ -27,6 +32,10 @@ class UsersController extends Controller
     {
         $roles = Role::select('id', 'name', 'description')->get();
         $roles = $roles->pluck('description', 'name');
+
+        if(!Gate::allows('isAdmin')){
+            abort(404,"Sorry, You can do this actions");
+        }
         return view('admin.users.create', compact('roles'));
     }
 
@@ -40,6 +49,10 @@ class UsersController extends Controller
         // foreach ($request->roles as $role) {
         //     $user->assignRole($role);
         // }
+
+        if(!Gate::allows('isAdmin')){
+            abort(404,"Sorry, You can do this actions");
+        }
         return redirect('admin/users')->with('flash_message', 'Utilisateurs ajouté!');
     }
 
@@ -53,6 +66,10 @@ class UsersController extends Controller
         // foreach ($user->roles as $role) {
         //     $user_roles[] = $role->name;
         // }
+
+        if(!Gate::allows('isAdmin')){
+            abort(404,"Sorry, You can do this actions");
+        }
         return view('admin.users.show', compact('user', 'roles','role'));
     }
 
@@ -66,6 +83,10 @@ class UsersController extends Controller
         // foreach ($user->roles as $role) {
         //     $user_roles[] = $role->name;
         // }
+
+        if(!Gate::allows('isAdmin')){
+            abort(404,"Sorry, You can do this actions");
+        }
         return view('admin.users.edit', compact('user', 'roles'));
     }
 
@@ -84,12 +105,20 @@ class UsersController extends Controller
         // foreach ($request->roles as $role) {
         //     $user->assignRole($role);
         // }
+
+        if(!Gate::allows('isAdmin')){
+            abort(404,"Sorry, You can do this actions");
+        }
         return redirect('admin/users')->with('flash_message', 'Utilisateur mis à jour!');
     }
 
     public function destroy($id)
     {
         User::destroy($id);
+
+        if(!Gate::allows('isAdmin')){
+            abort(404,"Sorry, You can do this actions");
+        }
         return redirect('admin/users')->with('flash_message', 'Utilisateur supprimé!');
     }
 }

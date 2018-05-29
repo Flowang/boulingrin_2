@@ -19,21 +19,35 @@ class FicheController extends Controller
 
     public function create()
     {
+
            return view('profile/fiche/create');
     }
     ######################    ######################    ######################    ######################    ######################    ######################
 
     public function store(Request $request)
     {
-        $fiches = Fiche::create($request->all());
-        $data = $this->validate($request, [
-            'title'=>'required',
-            'description'=>'required',
-            
-        ]);
+   
+$fiches = new Fiche();
 
-        $fiche->saveFiche($data);
-        return redirect('fiches')->with('success', 'Nouvelle fiche crée !');
+            $fiches->user_id = auth()->user()->id;
+            $fiches->title = $request->title;
+            $fiches->description = $request->description;
+            $fiches->img = $request->img;
+
+
+     if ($request->hasFile('featured_image')) {
+                $img = $request->file('featured_image');
+                $filename =  time() . '.' . $img->getClientOriginalExtension();
+                $location = public_path('img/' . $filename);
+                Image::make($img)->resize(800, 400)->save($location);
+
+                $filename = ('../img/') . $filename;
+                $fiches->img = $filename;
+            }
+
+        $fiches->save();
+
+        return redirect('fiches')->with('message', 'Nouvelle fiche crée !');
     }
         ######################    ######################    ######################    ######################    ######################    ######################
 

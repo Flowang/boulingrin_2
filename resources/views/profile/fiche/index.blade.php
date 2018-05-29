@@ -3,13 +3,14 @@
 @section('content')
 <div class="container">
 
+  @if(Session::has('message'))
+                    <div class="alert alert-success">{{ Session::get('message') }}</div>
+  @endif
+  
             @foreach($fiches as $fiche)
 <div class="card" style="width: 18rem;">
 
   <img class="card-img-top" src="{{$fiche->img}}" alt="Card image cap">
-
-
-
   <div class="card-body">
     <h5 class="card-title">{{$fiche->title}}</h5>
     <p class="card-text">{{$fiche->description}}</p>
