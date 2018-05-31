@@ -22,10 +22,14 @@ class UsersController extends Controller
             $users = User::paginate($perPage);
         }
 
+
+
+
+
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
         }
-        return view('admin.users.index', compact('users'));
+        return view('admin.users.index', compact('users','blob'));
     }
 
     public function create()
@@ -42,13 +46,14 @@ class UsersController extends Controller
    public function store(Request $request)
     {
         //required role comment faire ? SEB
-        $this->validate($request, ['name' => 'required', 'email' => 'required', 'password' => 'required']);
+        $this->validate($request, ['name' => 'required', 'email' => 'required', 'password' => 'required', 'roles_id' => 'required']);
         $data = $request->except('password');
         $data['password'] = bcrypt($request->password);
         $user = User::create($data);
-        // foreach ($request->roles as $role) {
-        //     $user->assignRole($role);
-        // }
+
+         foreach ($request->roles as $role) {
+             $user->assignRole($role);
+         }
 
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
@@ -58,6 +63,8 @@ class UsersController extends Controller
 
     public function show($id)
     {
+
+
         $user = User::findOrFail($id);
         $roles = Role::select('id', 'name', 'description')->get();
         $roles = $roles->pluck('description', 'name');
@@ -66,6 +73,8 @@ class UsersController extends Controller
         // foreach ($user->roles as $role) {
         //     $user_roles[] = $role->name;
         // }
+
+
 
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
@@ -79,6 +88,7 @@ class UsersController extends Controller
         $roles = Role::select('id', 'name', 'description')->get();
         $roles = $roles->pluck('description', 'name');
         $user->select('id', 'name', 'email','roles_id')->findOrFail($id);
+        
         // $user_roles = [];
         // foreach ($user->roles as $role) {
         //     $user_roles[] = $role->name;
@@ -101,6 +111,8 @@ class UsersController extends Controller
         }
         $user = User::findOrFail($id);
         $user->update($data);
+
+
         // $user->roles()->detach();
         // foreach ($request->roles as $role) {
         //     $user->assignRole($role);

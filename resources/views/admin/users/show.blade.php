@@ -36,11 +36,14 @@
                                 <tbody>
                                     <tr>
                                         <td>{{ $user->id }}</td> <td> {{ $user->name }} </td><td> {{ $user->email }} </td>
-
-                                        <td> {{ $user->roles_id }} </td>
+                                        
+                                        <td> {{ $user->roles->name }} </td>
                                     </tr>
                                 </tbody>
                             </table>
+
+                              
+
                         </div>
                     </div>
 
