@@ -4,34 +4,33 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Role;
+use App\User;
+use Barryvdh\Debugbar\Facade as Debugbar;
 
 class AuthServiceProvider extends ServiceProvider
 {
-    /**
-     * The policy mappings for the application.
-     *
-     * @var array
-     */
+
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
-    /**
-     * Register any authentication / authorization services.
-     *
-     * @return void
-     */
    public function boot()
     {
         $this->registerPolicies();
 
         Gate::define('isAdmin', function($users){
-            return $users->roles_id == '3';
+            $role = Role::where('name','Administrateur')->first();
+            return $users->roles_id == $role->id;
         });
-        Gate::define('isClient', function($users){
+
+        Gate::define('isCommerçant', function($users){
+            $role = Role::where('name','Commerçant')->first();
             return $users->roles_id == '2';
         });
-        Gate::define('isCommerçant', function($users){
+
+        Gate::define('isClient', function($users){
+            $role = Role::where('name','Client')->first();
             return $users->roles_id == '1';
         });
     }
