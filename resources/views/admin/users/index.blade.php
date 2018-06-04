@@ -51,7 +51,7 @@
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-sm',
                                                         'title' => 'Delete User',
-                                                        'onclick'=>'return confirm("Confirm delete?")'
+                                                        'onclick'=>'return confirm("Etes-vous sur de vouloir supprimer l\'utilisateur?")'
                                                 )) !!}
                                             {!! Form::close() !!}
                                         </td>

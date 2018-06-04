@@ -35,7 +35,6 @@ class UsersController extends Controller
     public function create()
     {
         $roles = Role::select('id', 'name', 'description')->get();
-        $roles = $roles->pluck('description', 'name');
 
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
@@ -51,9 +50,6 @@ class UsersController extends Controller
         $data['password'] = bcrypt($request->password);
         $user = User::create($data);
 
-         foreach ($request->roles as $role) {
-             $user->assignRole($role);
-         }
 
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
@@ -85,15 +81,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        $roles = Role::select('id', 'name', 'description')->get();
-        $roles = $roles->pluck('description', 'name');
-        $user->select('id', 'name', 'email','roles_id')->findOrFail($id);
-        
-        // $user_roles = [];
-        // foreach ($user->roles as $role) {
-        //     $user_roles[] = $role->name;
-        // }
-
+        $roles = Role::select('id', 'name', 'description')->get();        
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
         }
@@ -104,19 +92,17 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //roles required
-        $this->validate($request, ['name' => 'required', 'email' => 'required']);
+        $this->validate($request, ['name' => 'required', 'email' => 'required', 'roles_id'=>'required']);
         $data = $request->except('password');
         if ($request->has('password')) {
             $data['password'] = bcrypt($request->password);
         }
         $user = User::findOrFail($id);
+
+
         $user->update($data);
 
 
-        // $user->roles()->detach();
-        // foreach ($request->roles as $role) {
-        //     $user->assignRole($role);
-        // }
 
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");

@@ -15,7 +15,7 @@ class CreateFichesTable extends Migration
             $table->integer('user_id');
             $table->string('title');
             $table->text('description');
-            $table->string('img');
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }
