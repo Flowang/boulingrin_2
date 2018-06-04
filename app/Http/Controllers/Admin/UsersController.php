@@ -22,16 +22,19 @@ class UsersController extends Controller
             $users = User::paginate($perPage);
         }
 
+
+
+
+
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
         }
-        return view('admin.users.index', compact('users'));
+        return view('admin.users.index', compact('users','blob'));
     }
 
     public function create()
     {
         $roles = Role::select('id', 'name', 'description')->get();
-        $roles = $roles->pluck('description', 'name');
 
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
@@ -42,14 +45,10 @@ class UsersController extends Controller
    public function store(Request $request)
     {
         //required role comment faire ? SEB
-        $this->validate($request, ['name' => 'required', 'email' => 'required', 'password' => 'required']);
+        $this->validate($request, ['name' => 'required', 'email' => 'required', 'password' => 'required', 'roles_id' => 'required']);
         $data = $request->except('password');
         $data['password'] = bcrypt($request->password);
         $user = User::create($data);
-
-        $role_id=$request->input('role_id'); // get  Role id from post request
-        $role = Role::find($id);
-        $user->roles()->attach($role);
 
 
         if(!Gate::allows('isAdmin')){
@@ -60,6 +59,8 @@ class UsersController extends Controller
 
     public function show($id)
     {
+
+
         $user = User::findOrFail($id);
         $roles = Role::select('id', 'name', 'description')->get();
         $roles = $roles->pluck('description', 'name');
@@ -68,6 +69,8 @@ class UsersController extends Controller
         // foreach ($user->roles as $role) {
         //     $user_roles[] = $role->name;
         // }
+
+
 
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
@@ -87,6 +90,7 @@ class UsersController extends Controller
         //     $user_roles[] = $role->name;
         // }
 
+        $roles = Role::select('id', 'name', 'description')->get();        
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
         }
@@ -97,7 +101,7 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //roles required
-        $this->validate($request, ['name' => 'required', 'email' => 'required']);
+        $this->validate($request, ['name' => 'required', 'email' => 'required', 'roles_id'=>'required']);
         $data = $request->except('password');
         if ($request->has('password')) {
             $data['password'] = bcrypt($request->password);
@@ -105,6 +109,7 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         
         $role = $request->input('roles');
+
 
         $user->update($data);
 

@@ -11,12 +11,17 @@ class CreateProductTable extends Migration
     {
         Schema::create('product', function (Blueprint $table) {
             $table->increments('id');
-            // $table->foreignkey('id_commerçant');
+            $table->string('nom');
             $table->integer('prix_unité');
             $table->integer('prix_poids');
             $table->text('description');
-            // $table->foreignkey('pre_marche');
-
+            $table->integer('users_id');
+            $table
+            ->foreign('users_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade')
+            ->nullable();
             $table->timestamps();
         });
     }

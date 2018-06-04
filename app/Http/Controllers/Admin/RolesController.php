@@ -41,19 +41,30 @@ class RolesController extends Controller
     }
     public function show($id)
     {
+
                if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
         }
         $role = Role::findOrFail($id);
-        return view('admin.roles.show', compact('role'));
+        $roles = Role::select('id', 'name', 'description')->get();
+        $roles = $roles->pluck('description', 'name');
+
+
+        return view('admin.roles.show', compact('role','roles'));
     }
     public function edit($id)
     {
                if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
         }
+
+
         $role = Role::findOrFail($id);
-        return view('admin.roles.edit', compact('role'));
+        $roles = Role::select('id', 'name', 'description')->get();
+        $roles = $roles->pluck('description', 'name');
+
+        $role = Role::findOrFail($id);
+        return view('admin.roles.edit', compact('role','roles'));
     }
     public function update(Request $request, $id)
     {
