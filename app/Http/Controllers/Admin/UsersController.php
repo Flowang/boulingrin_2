@@ -46,9 +46,11 @@ class UsersController extends Controller
         $data = $request->except('password');
         $data['password'] = bcrypt($request->password);
         $user = User::create($data);
-        // foreach ($request->roles as $role) {
-        //     $user->assignRole($role);
-        // }
+
+        $role_id=$request->input('role_id'); // get  Role id from post request
+        $role = Role::find($id);
+        $user->roles()->attach($role);
+
 
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
@@ -79,6 +81,7 @@ class UsersController extends Controller
         $roles = Role::select('id', 'name', 'description')->get();
         $roles = $roles->pluck('description', 'name');
         $user->select('id', 'name', 'email','roles_id')->findOrFail($id);
+        
         // $user_roles = [];
         // foreach ($user->roles as $role) {
         //     $user_roles[] = $role->name;
@@ -100,11 +103,12 @@ class UsersController extends Controller
             $data['password'] = bcrypt($request->password);
         }
         $user = User::findOrFail($id);
+        
+        $role = $request->input('roles');
+
         $user->update($data);
-        // $user->roles()->detach();
-        // foreach ($request->roles as $role) {
-        //     $user->assignRole($role);
-        // }
+
+
 
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");

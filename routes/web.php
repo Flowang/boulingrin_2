@@ -35,8 +35,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('fiches/create','FicheController@create');
     Route::post('fiches/create','FicheController@store');
+    
     Route::get('fiches/edit/{id}','FicheController@edit');
-
     Route::patch('fiches/update/{id}','FicheController@update');
 
     Route::delete('fiches/delete/{id}','FicheController@destroy');
