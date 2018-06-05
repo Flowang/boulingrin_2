@@ -14,6 +14,7 @@ class CreateProductTable extends Migration
             $table->string('nom');
             $table->integer('prix_unité');
             $table->integer('prix_poids');
+            $table->string('img');
             $table->text('description');
             $table->integer('users_id');
             $table

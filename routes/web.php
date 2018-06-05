@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Product;
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +30,9 @@ Route::get('admin', 'Admin\AdminController@index');
 Route::resource('admin/users', 'Admin\UsersController');
 Route::resource('admin/roles', 'Admin\RolesController');
 
+Route::resource('product', 'ProductController');
+
+
 
 Route::group(['middleware' => 'web'], function () {
     Route::get('/edit-profile', 'EditprofileController@editprofile');
@@ -36,6 +42,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('fiches/create','FicheController@create');
     Route::post('fiches/create','FicheController@store');
     
+    
+    Route::get('product/{id}/edit','ProductController@edit');
+    Route::patch('product/{id}/update','ProductController@update');
+
     Route::get('fiches/edit/{id}','FicheController@edit');
     Route::patch('fiches/update/{id}','FicheController@update');
 

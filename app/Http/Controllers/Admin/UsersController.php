@@ -51,6 +51,7 @@ class UsersController extends Controller
         $user = User::create($data);
 
 
+        
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
         }

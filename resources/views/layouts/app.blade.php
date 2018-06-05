@@ -61,6 +61,9 @@
                                     <a class="dropdown-item" href="{{ url('/fiches') }}">
                                         Ma fiche
                                     </a>
+                                     <a class="dropdown-item" href="{{ url('/product') }}">
+                                        Boutique
+                                    </a>
                                     
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                         @csrf
