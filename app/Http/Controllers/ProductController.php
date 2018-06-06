@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\User;
+use App\Joma;
 use App\Http\Requests;
 use Image;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,7 +15,9 @@ class ProductController extends Controller
 
     public function index()
     {
-           $products = Product::latest()->paginate();
+           $products = Product::all();   //Sort tout les produits
+            // $products = Product::where('users_id', auth()->user()->id)->get();    Sort juste les produits de l'utilisateurs
+            // $products = Product::where('users_id', '1')->get();      Sort juste les produits qui ont users_id =  1
             return view('product.index', compact('products'));
 
     }
@@ -33,6 +38,7 @@ class ProductController extends Controller
             'prix_unite'=>'required',
             'description'=>'required',
             'img'=> 'nullable',
+
         ]);
 
         $products->prix_unite = $data['prix_unite'];
@@ -49,6 +55,12 @@ class ProductController extends Controller
                 $filename = ('../img/') . $filename;
                 $products->img = $filename;
             }
+
+        $products->users_id = Auth::id();
+
+
+
+
         $products->save();
         return redirect('product')->with('flash_message', 'Utilisateurs ajouté!');
 

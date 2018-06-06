@@ -20,4 +20,9 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role');
     }
 
+    public function joma() 
+    {
+        return $this->belongsToMany('App\Joma','joma_users','id_users','id_joma');
+    }
+
 }
