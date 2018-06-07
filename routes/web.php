@@ -32,7 +32,7 @@ Route::resource('admin/roles', 'Admin\RolesController');
 
 Route::resource('product', 'ProductController');
 
-
+Route::get('/joma', 'JomaController@index');
 
 Route::group(['middleware' => 'web'], function () {
     Route::get('/edit-profile', 'EditprofileController@editprofile');
