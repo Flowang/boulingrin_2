@@ -22,9 +22,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::get('/productlist', 'JomaController@joma_production');
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('admin', 'Admin\AdminController@index');
 Route::resource('admin/users', 'Admin\UsersController');

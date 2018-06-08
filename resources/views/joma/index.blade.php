@@ -19,20 +19,17 @@
             <div class="row">
                     <div class="col-md-5"></div>
                     <div class="col-md-6">
-                        <button type="button"  onclick="selected()" class="btn btn-primary">Valider</button>
+                        <a href="{{ url('/productlist')}}"  onclick="selected()" class="btn btn-primary">Valider</a>
                     </div>
             </div>
 	</div>
 </div>
 
 <script>
-
 function selected() {
     var selectvalue = document.getElementById("joma_select").value;
     console.log(selectvalue)
-    $selectvalue = 
 }
-
 </script>
 
 @endsection
