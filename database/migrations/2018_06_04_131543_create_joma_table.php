@@ -13,7 +13,7 @@ class CreateJomaTable extends Migration
      */
     public function up()
     {
-        Schema::create('joma', function (Blueprint $table) {
+        Schema::create('jomas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('joma');
             $table->timestamps();

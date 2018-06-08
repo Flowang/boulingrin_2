@@ -52,3 +52,4 @@ Route::group(['middleware' => 'web'], function () {
     Route::delete('fiches/delete/{id}','FicheController@destroy');
     Route::get('fiches', 'FicheController@index');
     });
+

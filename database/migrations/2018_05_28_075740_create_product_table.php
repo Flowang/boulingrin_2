@@ -13,7 +13,7 @@ class CreateProductTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->integer('prix_unité');
-            $table->integer('prix_poids');
+            $table->integer('prix_poids')->default(NULL);
             $table->string('img');
             $table->text('description');
             $table->integer('users_id');

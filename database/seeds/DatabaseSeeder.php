@@ -9,7 +9,7 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'Louis Hans',
-            'email' => 'louis.hans@viacesi.fr',
+            'email' => 'louis.hans@laposte.fr',
             'password' => bcrypt('Perl!c0tte'),
             'roles_id' => '3',
 
@@ -29,25 +29,46 @@ class DatabaseSeeder extends Seeder
         ]);
 
    DB::table('joma')->insert([
-            'joma' => 'lundi',
+            'joma' => 'lundi matin',
         ]);
            DB::table('joma')->insert([
-            'joma' => 'mardi',
+            'joma' => 'lundi après-midi',
         ]);
            DB::table('joma')->insert([
-            'joma' => 'mercredi',
+            'joma' => 'mardi matin',
+        ]);
+            DB::table('joma')->insert([
+            'joma' => 'mardi après-midi',
         ]);
            DB::table('joma')->insert([
-            'joma' => 'jeudi',
+            'joma' => 'mercredi matin',
+        ]);
+              DB::table('joma')->insert([
+            'joma' => 'mercredi après-midi',
         ]);
            DB::table('joma')->insert([
-            'joma' => 'vendredi',
+            'joma' => 'jeudi matin',
+        ]);
+              DB::table('joma')->insert([
+            'joma' => 'jeudi après-midi',
         ]);
            DB::table('joma')->insert([
-            'joma' => 'samedi',
+            'joma' => 'vendredi matin',
+        ]);
+              DB::table('joma')->insert([
+            'joma' => 'vendredi après-midi',
         ]);
            DB::table('joma')->insert([
-            'joma' => 'dimanche',
+            'joma' => 'samedi matin',
+        ]);
+            DB::table('joma')->insert([
+            'joma' => 'samedi après-midi',
+        ]);
+           DB::table('joma')->insert([
+            'joma' => 'dimanche matin',
+        ]);
+            DB::table('joma')->insert([
+            'joma' => 'dimanche après-midi',
         ]);
 
 

@@ -14,6 +14,7 @@ class JomaController extends Controller
     public function index()
     {
         $jomas = Joma::all();  
+
             return view('joma.index', compact('jomas'));
     }
 }
