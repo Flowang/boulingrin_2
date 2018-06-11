@@ -22,7 +22,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/productlist', 'JomaController@joma_production');
+// Route::get('/productlist', 'JomaController@joma_production');
+
+Route::get('/productlist/{jomas_id}', [
+    'as' => 'product', 'uses' => 'JomaController@joma_production'
+]);
 
 
 Route::get('admin', 'Admin\AdminController@index');

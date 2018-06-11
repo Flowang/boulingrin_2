@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 	<div class="panel panel-default">
-		<h1>Veuillez choisir votre jour de marché !</h1>
+		<h1 style="text-align:center;">Veuillez choisir votre jour de marché !</h1>
         <div class="form-group">
             <div class="row">
                 <div class="col-md-3"></div>
@@ -19,17 +19,28 @@
             <div class="row">
                     <div class="col-md-5"></div>
                     <div class="col-md-6">
-                        <a href="{{ url('/productlist')}}"  onclick="selected()" class="btn btn-primary">Valider</a>
+                    <!-- <input type="button" id = "getDataButton" value="Get Selected Text and Value" /> -->
+
+ <!-- <a href="{{route('product', ['jomas_id' => '2'])}}">Valider</a> -->
+
+<a class="btn btn-primary" onclick="redirectTo();">Valider</a>
+
+
                     </div>
             </div>
 	</div>
 </div>
 
-<script>
-function selected() {
-    var selectvalue = document.getElementById("joma_select").value;
-    console.log(selectvalue)
+  <script type="text/javascript">
+function redirectTo(){
+        var e = document.getElementById("joma_select");
+        var strUser = e.options[e.selectedIndex].value;
+    window.location.href="http://127.0.0.1:8000/productlist/"+strUser;
 }
 </script>
+
+<!-- <script>
+alert($('#joma_select').val());
+</script> -->
 
 @endsection
