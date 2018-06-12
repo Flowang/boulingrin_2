@@ -15,8 +15,8 @@ class ProductController extends Controller
 
     public function index()
     {
-           $products = Product::all();   //Sort tout les produits
-            // $products = Product::where('users_id', auth()->user()->id)->get();    Sort juste les produits de l'utilisateurs
+        //    $products = Product::all();   //Sort tout les produits
+            $products = Product::where('users_id', auth()->user()->id)->get();    //Sort juste les produits de l'utilisateurs
             // $products = Product::where('users_id', '1')->get();      Sort juste les produits qui ont users_id =  1
             return view('product.index', compact('products'));
 
@@ -57,10 +57,6 @@ class ProductController extends Controller
             }
 
         $products->users_id = Auth::id();
-
-
-
-
         $products->save();
         return redirect('product')->with('flash_message', 'Utilisateurs ajouté!');
 

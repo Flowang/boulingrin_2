@@ -57,16 +57,20 @@
                                     <a class="dropdown-item" href="{{ url('edit-profile') }}">
                                         Mon Profil
                                     </a>
+                                    @can('isCommerçant')
                                      <a class="dropdown-item" href="{{ url('/product') }}">
                                         Mes produits
                                     </a>
+                                    @endcan
                                      <a class="dropdown-item" href="{{ url('/order') }}">
                                         Mes commandes
                                     </a>
+                                    @can('isCommerçant')
                                     <a class="dropdown-item" href="{{ url('/fiches') }}">
                                         Ma fiche
                                     </a>
-                                     <a class="dropdown-item" href="{{ url('/product') }}">
+                                    @endcan
+                                     <a class="dropdown-item" href="{{ url('/joma') }}">
                                         Boutique
                                     </a>
                                     

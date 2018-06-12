@@ -28,51 +28,85 @@ class DatabaseSeeder extends Seeder
             'roles_id' => '1',
         ]);
 
-   DB::table('joma')->insert([
+   DB::table('jomas')->insert([
             'joma' => 'lundi matin',
         ]);
-           DB::table('joma')->insert([
+           DB::table('jomas')->insert([
             'joma' => 'lundi après-midi',
         ]);
-           DB::table('joma')->insert([
+           DB::table('jomas')->insert([
             'joma' => 'mardi matin',
         ]);
-            DB::table('joma')->insert([
+            DB::table('jomas')->insert([
             'joma' => 'mardi après-midi',
         ]);
-           DB::table('joma')->insert([
+           DB::table('jomas')->insert([
             'joma' => 'mercredi matin',
         ]);
-              DB::table('joma')->insert([
+              DB::table('jomas')->insert([
             'joma' => 'mercredi après-midi',
         ]);
-           DB::table('joma')->insert([
+           DB::table('jomas')->insert([
             'joma' => 'jeudi matin',
         ]);
-              DB::table('joma')->insert([
+              DB::table('jomas')->insert([
             'joma' => 'jeudi après-midi',
         ]);
-           DB::table('joma')->insert([
+           DB::table('jomas')->insert([
             'joma' => 'vendredi matin',
         ]);
-              DB::table('joma')->insert([
+              DB::table('jomas')->insert([
             'joma' => 'vendredi après-midi',
         ]);
-           DB::table('joma')->insert([
+           DB::table('jomas')->insert([
             'joma' => 'samedi matin',
         ]);
-            DB::table('joma')->insert([
+            DB::table('jomas')->insert([
             'joma' => 'samedi après-midi',
         ]);
-           DB::table('joma')->insert([
+           DB::table('jomas')->insert([
             'joma' => 'dimanche matin',
         ]);
-            DB::table('joma')->insert([
+            DB::table('jomas')->insert([
             'joma' => 'dimanche après-midi',
         ]);
 
 
- DB::table('roles')->insert([
+        DB::table('joma_users')->insert([
+            'id_users' => '1',
+            'id_joma' => '1',
+        ]);
+        DB::table('joma_users')->insert([
+            'id_users' => '1',
+            'id_joma' => '2',
+        ]);
+        DB::table('joma_users')->insert([
+            'id_users' => '1',
+            'id_joma' => '3',
+        ]);
+        DB::table('joma_users')->insert([
+            'id_users' => '1',
+            'id_joma' => '4',
+        ]);
+        DB::table('joma_users')->insert([
+            'id_users' => '1',
+            'id_joma' => '5',
+        ]);
+        DB::table('joma_users')->insert([
+            'id_users' => '2',
+            'id_joma' => '1',
+        ]);
+        DB::table('joma_users')->insert([
+            'id_users' => '2',
+            'id_joma' => '2',
+        ]);
+        DB::table('joma_users')->insert([
+            'id_users' => '2',
+            'id_joma' => '3',
+        ]);
+
+
+        DB::table('roles')->insert([
             'name' => 'Client',
             'description' => 'Client',
         ]);
@@ -84,6 +118,64 @@ class DatabaseSeeder extends Seeder
             'name' => 'Administrateur',
             'description' => 'Administrateur',
         ]);
+
+
+
+        DB::table('products')->insert([
+            'nom' => 'Pomme Verte',
+            'prix_unite' => '2',
+            'description' => 'Je suis une pomme 1',
+            'users_id' => '1',
+        ]);
+        DB::table('products')->insert([
+            'nom' => 'Pomme rouge',
+            'prix_unite' => '2',
+            'description' => 'Je suis une pomme 2',
+            'users_id' => '1',
+        ]);
+        DB::table('products')->insert([
+            'nom' => 'Pomme Jaune',
+            'prix_unite' => '4',
+            'description' => 'Je suis une pomme 3',
+            'users_id' => '1',
+        ]);
+        DB::table('products')->insert([
+            'nom' => 'Pomme noire',
+            'prix_unite' => '5',
+            'description' => 'Je suis une pomme 4',
+            'users_id' => '2',
+        ]);
+
+        DB::table('products')->insert([
+            'nom' => 'Pomme Verte',
+            'prix_unite' => '2',
+            'description' => 'Je suis une pomme 5',
+            'users_id' => '2',
+        ]);
+        DB::table('products')->insert([
+            'nom' => 'Pomme Verte',
+            'prix_unite' => '2',
+            'description' => 'Je suis une pomme 6',
+            'users_id' => '2',
+        ]);
+
+
+        DB::table('fiches')->insert([
+            'title' => 'Cogniard & Fils',
+            'user_id' => '1',
+            'description' => 'Je vends de la volaille sous vide, et je fais plein de chose très intéressante',
+        ]);        
+        DB::table('fiches')->insert([
+            'title' => 'Champfleury & Co',
+            'user_id' => '2',
+            'description' => 'Jadore les fruits et les légumes, cest vraiment super sympa',
+        ]);        
+        DB::table('fiches')->insert([
+            'title' => 'JeSuisPecheur',
+            'user_id' => '3',
+            'description' => 'Je suis un passioné de poisson, jen mange tous les jours, cest la folie',
+        ]);
+
 
     }
 }

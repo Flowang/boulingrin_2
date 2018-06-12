@@ -4,8 +4,7 @@
 <div class="container">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			Boutique
-			<a href="{{ route('product.create') }}" class="btn btn-success btn-xs">Ajouté un article</a>
+			<h1 style=text-align:center;>Boutique</h1>
 		</div>
 
 			<div class="row">
@@ -16,7 +15,7 @@
 								<h5 class="card-title">{{$joma_product->nom}}</h5>
 								<h5 class="card-title">{{$joma_product->prix_unite}}$</h5>
 								<p class="card-text">{{$joma_product->description}}</p>
-								<a href="{{ route('product.edit', $joma_product->id) }}" class="btn btn-success btn-xs">Edit</a>
+								<a href="#" class="btn btn-success btn-xs">Acheter</a>
 							</div>
 						</div>
 						@endforeach
