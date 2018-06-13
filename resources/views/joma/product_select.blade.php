@@ -6,7 +6,6 @@
 		<div class="panel-heading">
 			<h1 style=text-align:center;>Boutique</h1>
 		</div>
-
 			<div class="row">
 						@foreach($joma_products as $joma_product)
 						<div class="card col-md-3 ">

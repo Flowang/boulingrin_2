@@ -17,12 +17,16 @@ class CreateProductTable extends Migration
             $table->string('img')->nullable();
             $table->text('description');
             $table->integer('users_id');
-            $table
-            ->foreign('users_id')
+            $table->foreign('users_id')
             ->references('id')
             ->on('users')
-            ->onDelete('cascade')
-            ->nullable();
+            ->onDelete('cascade');
+
+            $table->integer('categories_id');
+            $table->foreign('categories_id')
+            ->references('id')
+            ->on('categories')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

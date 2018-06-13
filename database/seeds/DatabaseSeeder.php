@@ -126,24 +126,28 @@ class DatabaseSeeder extends Seeder
             'prix_unite' => '2',
             'description' => 'Je suis une pomme 1',
             'users_id' => '1',
+            'categories_id' => '1',
         ]);
         DB::table('products')->insert([
             'nom' => 'Pomme rouge',
             'prix_unite' => '2',
             'description' => 'Je suis une pomme 2',
             'users_id' => '1',
+            'categories_id' => '1',
         ]);
         DB::table('products')->insert([
             'nom' => 'Pomme Jaune',
             'prix_unite' => '4',
             'description' => 'Je suis une pomme 3',
             'users_id' => '1',
+            'categories_id' => '1',
         ]);
         DB::table('products')->insert([
             'nom' => 'Pomme noire',
             'prix_unite' => '5',
             'description' => 'Je suis une pomme 4',
             'users_id' => '2',
+            'categories_id' => '1',
         ]);
 
         DB::table('products')->insert([
@@ -151,12 +155,14 @@ class DatabaseSeeder extends Seeder
             'prix_unite' => '2',
             'description' => 'Je suis une pomme 5',
             'users_id' => '2',
+            'categories_id' => '1',
         ]);
         DB::table('products')->insert([
             'nom' => 'Pomme Verte',
             'prix_unite' => '2',
             'description' => 'Je suis une pomme 6',
             'users_id' => '2',
+            'categories_id' => '1',
         ]);
 
 
