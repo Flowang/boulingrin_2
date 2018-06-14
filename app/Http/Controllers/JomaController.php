@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Joma;
 use App\Product;
 use App\User;
+use App\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use DB;
@@ -25,16 +26,10 @@ class JomaController extends Controller
     public function joma_production (Request $request,$id)
     {
         
-        // SELECT * FROM `products`, `joma_users`, `jomas`, `users` WHERE joma_users.id_joma = jomas.id 
-        // AND joma_users.id_users = users.id
-        // AND users.id = products.users_id
-        //AND jomas.id = 7
+        $categories = Categorie::all();
 
-      
     $joma = Joma::where('id', $id)
                         ->first();
-
- 
 
         $joma_products = DB::table('products')
         ->join('users','products.users_id', '=', 'users.id')        
@@ -43,12 +38,6 @@ class JomaController extends Controller
         ->where('jomas.id','=',$joma->id)
         ->get();
 
-// LE PROBLEME VIENS DES JOINS
-
-        // ->where ('jomas.id','=','joma_users.id_joma')
-        // ->where ('joma_users.id_users','=','users.id')
-        // ->where ('products.id_users','=','users.id')
-        // ->where ('jomas.id','=',$joma->id);
-        return view('joma.product_select',compact('joma_products','joma'));
+        return view('joma.product_select',compact('joma_products','joma','categories'));
     }
 }

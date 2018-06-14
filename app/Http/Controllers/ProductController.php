@@ -117,4 +117,12 @@ class ProductController extends Controller
     {
         //
     }
+
+
+    public function productsCat(Request $request)
+    {
+        echo $categories_id = $request->categories_id;
+    }
+
+
 }

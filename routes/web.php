@@ -37,6 +37,9 @@ Route::resource('product', 'ProductController');
 
 Route::get('/joma', 'JomaController@index');
 
+
+//Product with ajax
+
 Route::group(['middleware' => 'web'], function () {
     Route::get('/edit-profile', 'EditprofileController@editprofile');
     Route::post('/edit-profile', 'EditprofileController@saveeditprofile');
