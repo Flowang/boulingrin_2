@@ -28,7 +28,7 @@ class JomaController extends Controller
         
         $categories = Categorie::all();
 
-    $joma = Joma::where('id', $id)
+        $joma = Joma::where('id', $id)
                         ->first();
 
         $joma_products = DB::table('products')
