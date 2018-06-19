@@ -23,9 +23,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Route::get('/productlist', 'JomaController@joma_production');
+<<<<<<< HEAD
 Route::get('/productlist/{jomas_id}', [
     'as' => 'product', 'uses' => 'JomaController@joma_production'
 ]);
+=======
+
+Route::get('/productlist/{jomas_id}','JomaController@joma_production');
+Route::get('productList','ProductController@productsCat');
+>>>>>>> 87cc22dada4f37b788308d46e61e178e564eb4cf
 
 
 Route::get('admin', 'Admin\AdminController@index');

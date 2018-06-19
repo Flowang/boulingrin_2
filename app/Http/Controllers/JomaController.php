@@ -26,7 +26,8 @@ class JomaController extends Controller
     public function joma_production (Request $request,$id)
     {
         
-        $categories = Categorie::all();
+    $categories = Categorie::all();
+    
 
         $joma = Joma::where('id', $id)
                         ->first();
