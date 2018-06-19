@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use DB;
 
 class ProductController extends Controller
 {
@@ -121,7 +122,15 @@ class ProductController extends Controller
 
     public function productsCat(Request $request)
     {
-        echo $categories_id = $request->categories_id;
+    $id = $request->id;
+    $data = DB::table('products')
+    ->join('categories','categories.id','products.categories_id')
+    ->where('products.categories_id',$id)
+    ->get();
+
+    return view('joma.product_page',[
+        'data' => $data
+    ]);
     }
 
 

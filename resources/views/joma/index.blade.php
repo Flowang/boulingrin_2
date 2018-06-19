@@ -21,8 +21,6 @@
                     <div class="col-md-6">
                     <!-- <input type="button" id = "getDataButton" value="Get Selected Text and Value" /> -->
 
- <!-- <a href="{{route('product', ['jomas_id' => '2'])}}">Valider</a> -->
-
 <a class="btn btn-primary" onclick="redirectTo();">Valider</a>
 
 
