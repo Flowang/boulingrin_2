@@ -1,17 +1,18 @@
 <script>
 $(document).ready(function(){
-	@foreach($categories as $categorie)
-  $("#cat_select").change(function()
+	@foreach($users as $user)
+  $("#com_select").change(function()
     {
-        var cat = $("#cat_select").val();
+        var cat = $("#com_select").val();
+        // alert(cat);
         $.ajax({
             type:'get',
             dataType: 'html',
-            url:"{{url('/productList')}}",
+            url:"{{url('/commercantList')}}",
             data:'id=' + cat,
             success:function(response){
                 // console.log(response);
-                $("#productData").html(response);
+                $("#commercantData").html(response);
             }
         });
     });

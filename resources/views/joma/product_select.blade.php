@@ -2,25 +2,30 @@
 
 @section('content')
 @include('joma.ourJs')
+@include('joma.tourJs')
 <div class="lolilol">
-     <div class="col-md-3">
-		<ul class="list">
-			<li class="option selected">Some option</li>
-			@foreach($categories as $categorie)
-			<li class="option" id="cat{{$categorie->id}}" value="{{$categorie->id}}">{{$categorie->libelle}}</li>
-			 @endforeach
-		</ul>
-
-
-         <!-- <select class="form-control" id="joma_select">
-		     <option value="start">Choisir une catégorie</option>
-		 	@foreach($categories as $categorie)
-                <option id="cat{{$categorie->id}}" value="{{$categorie->id}}">{{$categorie->libelle}}</option>
-             @endforeach
-        </select> -->
-    </div>
+	<div class="row">
+	<div class="col-md-1"></div>
+		<div class="col-md-3">
+			<select class="form-control" id="cat_select"  >
+				<option value="0">Choisir une catégorie</option>
+				@foreach($categories as $categorie)
+					<option id="cat{{$categorie->id}}" value="{{$categorie->id}}">{{$categorie->libelle}}</option>
+				@endforeach
+			</select> 
+		</div>
+		<div class="col-md-3">
+			<select class="form-control" id="com_select">
+				<option value="start">Choisir un commerçant</option>
+				@foreach($users as $users)
+					<option id="cat{{$users->id}}" value="{{$users->id}}">{{$users->name}}</option>
+				@endforeach
+			</select> 
+		</div>
+	</div>
 </div>
 
+<a class="btn btn-primary" href="{{ url()->current() }}">Reset</a>
 
 <div class="container">
 </div>
@@ -28,6 +33,7 @@
 		<div class="panel-heading">
 			<h1 style=text-align:center;>Boutique</h1>
 		</div>
+		<div id="commercantData">
 		<div id="productData">
 			<div class="row">
 						@foreach($joma_products as $joma_product)
@@ -42,6 +48,7 @@
 						</div>
 						@endforeach
 			</div>
+		</div>
 		</div>
 	</div>
 </div>

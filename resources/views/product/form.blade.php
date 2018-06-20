@@ -26,6 +26,19 @@
     </div>
 </div>
 
+
+<div class="form-group{{ $errors->has('categories') ? ' has-error' : ''}}">
+    {!! Form::label('categorie', 'Catégorie: ', ['class' => 'col-md-4 control-label']) !!}
+<div class="form-group">
+    <div class="col-md-6">
+            <select class="form-control" name="categories_id">
+                @foreach($categories as $categorie)
+                <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
+                @endforeach
+            </select>
+    </div>
+</div>
+
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">
         {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Crée', ['class' => 'btn btn-primary']) !!}
