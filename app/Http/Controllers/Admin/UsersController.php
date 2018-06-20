@@ -49,9 +49,6 @@ class UsersController extends Controller
         $data = $request->except('password');
         $data['password'] = bcrypt($request->password);
         $user = User::create($data);
-
-
-        
         if(!Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
         }

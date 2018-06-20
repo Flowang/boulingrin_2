@@ -19,7 +19,6 @@
             <div class="row">
                     <div class="col-md-5"></div>
                     <div class="col-md-6">
-                    <!-- <input type="button" id = "getDataButton" value="Get Selected Text and Value" /> -->
 
 <a class="btn btn-primary" onclick="redirectTo();">Valider</a>
 
