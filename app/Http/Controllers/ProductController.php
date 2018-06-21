@@ -131,13 +131,30 @@ class ProductController extends Controller
 
     public function productsCat(Request $request)
     {
-    $id = $request->id;
-    $data = DB::table('products')
-    ->join('categories','categories.id','products.categories_id')
-    ->where('products.categories_id',$id)
-    ->get();
-     
+        $id_cat = $request->id_cat;
+        $id = $request->id;
 
+if($id_cat!="" && $id!=""){
+    $data = DB::table('products')
+    ->join('categories','categories.id_cat','products.categories_id')
+    ->where('products.categories_id',$id_cat)
+    ->where('products.users_id',$id)
+    ->get();
+}
+else if($id_cat!=""){
+    $data = DB::table('products')
+    ->join('categories','categories.id_cat','products.categories_id')
+    ->where('products.categories_id',$id_cat)
+    // ->where('products.users_id',$id)
+    ->get();
+}
+else if($id!=""){
+    $data = DB::table('products')
+    ->join('categories','categories.id_cat','products.categories_id')
+    // ->where('products.categories_id',$id_cat)
+    ->where('products.users_id',$id)
+    ->get();
+}
     return view('joma.product_page',[
         'data' => $data
     ]);

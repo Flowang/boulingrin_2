@@ -2,19 +2,20 @@
 
 @section('content')
 @include('joma.ourJs')
-@include('joma.tourJs')
+<!-- @include('joma.tourJs') -->
 <div class="lolilol">
-	<div class="row">
-	<div class="col-md-1"></div>
-		<div class="col-md-3">
+	<div class="row ">
+	<div class="col-md-1 search_bar_1"><a class="btn btn-primary" href="{{ url()->current() }}">Reset</a></div>
+	<div class="col-md-1 search_bar_1"><a class="btn btn-primary" id="findBtn">Rechercher</a></div>
+		<div class="col-md-3 search_bar">
 			<select class="form-control" id="cat_select"  >
 				<option value="0">Choisir une catégorie</option>
 				@foreach($categories as $categorie)
-					<option id="cat{{$categorie->id}}" value="{{$categorie->id}}">{{$categorie->libelle}}</option>
+					<option id="cat{{$categorie->id_cat}}" value="{{$categorie->id_cat}}">{{$categorie->libelle}}</option>
 				@endforeach
 			</select> 
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3  search_bar">
 			<select class="form-control" id="com_select">
 				<option value="start">Choisir un commerçant</option>
 				@foreach($users as $users)
@@ -22,10 +23,11 @@
 				@endforeach
 			</select> 
 		</div>
+		<div class="col-md-3 search_bar">
+		</div>
 	</div>
 </div>
 
-<a class="btn btn-primary" href="{{ url()->current() }}">Reset</a>
 
 <div class="container">
 </div>
@@ -35,7 +37,6 @@
 		</div>
 		<div id="commercantData">
 		<div id="productData">
-
 			<div class="row">
 						@foreach($joma_products as $joma_product)
 						<div class="card col-md-3 ">
