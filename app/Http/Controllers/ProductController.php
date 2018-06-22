@@ -135,6 +135,7 @@ class ProductController extends Controller
         $id = $request->id;
 
 if($id_cat!="" && $id!=""){
+            // echo "les deux sont selectionné";
     $data = DB::table('products')
     ->join('categories','categories.id_cat','products.categories_id')
     ->where('products.categories_id',$id_cat)
@@ -142,6 +143,7 @@ if($id_cat!="" && $id!=""){
     ->get();
 }
 else if($id_cat!=""){
+        // echo "il y a que la cat selectionné";
     $data = DB::table('products')
     ->join('categories','categories.id_cat','products.categories_id')
     ->where('products.categories_id',$id_cat)
@@ -149,6 +151,7 @@ else if($id_cat!=""){
     ->get();
 }
 else if($id!=""){
+    // echo "il y a que le commerçant selectionné";
     $data = DB::table('products')
     ->join('categories','categories.id_cat','products.categories_id')
     // ->where('products.categories_id',$id_cat)
@@ -156,8 +159,9 @@ else if($id!=""){
     ->get();
 }
     return view('joma.product_page',[
-        'data' => $data
+        'data' => $data,
     ]);
+    
     }
 
 
