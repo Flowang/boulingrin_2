@@ -33,7 +33,7 @@
     <div class="col-md-6">
             <select class="form-control" name="categories_id">
                 @foreach($categories as $categorie)
-                <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
+                <option value="{{$categorie->id_cat}}">{{$categorie->libelle}}</option>
                 @endforeach
             </select>
     </div>

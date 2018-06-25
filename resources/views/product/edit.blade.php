@@ -13,7 +13,7 @@
 @endif
     <div class="row">
     
-    <form method="post" enctype="multipart/form-data" files="true" action="{{action('ProductController@update', $id) }}" >
+    <form method="post" enctype="multipart/form-data" files="true" action="{{action('ProductController@update', $id_prod) }}" >
 
         {{csrf_field()}}
         <input name="_method" type="hidden" value="PATCH">
@@ -42,7 +42,7 @@
     <div class="col-md-6">
             <select class="form-control" name="categories_id">
                 @foreach($categories as $categorie)
-                <option value="{{$categorie->id}}">{{$categorie->libelle}}</option>
+                <option value="{{$categorie->id_cat}}">{{$categorie->libelle}}</option>
                 @endforeach
             </select>
     </div>

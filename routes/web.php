@@ -37,6 +37,21 @@ Route::resource('product', 'ProductController');
 Route::get('/joma', 'JomaController@index');
 
 
+Route::get('test',function()
+{
+    Cart::add('293ad', 'Product 1', 1, 9.99);
+});
+
+Route::get('cart',function()
+{
+    return Cart::content();
+});
+
+Route::get('total',function(){
+    return Cart::total();
+});
+
+
 //Product with ajax
 
 Route::group(['middleware' => 'web'], function () {

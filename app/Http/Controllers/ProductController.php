@@ -28,7 +28,7 @@ class ProductController extends Controller
 
     public function create()
     {           
-        $categories = Categorie::select('id', 'libelle')->get();
+        $categories = Categorie::select('id_cat', 'libelle')->get();
         return view('product.create', compact('categories'));
     }
 
@@ -68,26 +68,26 @@ class ProductController extends Controller
     }
 
 
-    public function show($id)
+    public function show($id_prod)
     {
-        $products = Product::findOrFail($id);
-        $products->select('id', 'nom', 'prix_unite','description','categories_id')->findOrFail($id);
+        $products = Product::findOrFail($id_prod);
+        $products->select('id_prod', 'nom', 'prix_unite','description','categories_id')->findOrFail($id_prod);
         return view('product.show', compact('products'));
     }
 
 
-    public function edit($id)
+    public function edit($id_prod)
     {
         
-    $categories = Categorie::select('id', 'libelle')->get();
-    $products = Product::where('id', $id)
+    $categories = Categorie::select('id_cat', 'libelle')->get();
+    $products = Product::where('id_prod', $id_prod)
                         ->first();
 
-        return view('product.edit', compact('products','id','categories'));
+        return view('product.edit', compact('products','id_prod','categories'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_prod)
     {
         $products = new Product();
         $data = $this->validate($request, [
@@ -98,9 +98,9 @@ class ProductController extends Controller
             'categories_id'=>'required',
 
         ]);
-        $data['id'] = $id;
+        $data['id_prod'] = $id_prod;
 
-        $products = $products->find($data['id']);
+        $products = $products->find($data['id_prod']);
         $products->prix_unite = $data['prix_unite'];
         $products->description = $data['description'];
         $products->nom = $data['nom'];

@@ -45,10 +45,18 @@
 								<h5 class="card-title">{{$joma_product->nom}}</h5>
 								<h5 class="card-title">{{$joma_product->prix_unite}}$</h5>
 								<p class="card-text">{{$joma_product->description}}</p>
-								<a href="#" class="btn btn-success btn-xs">Acheter</a>
+								
+								<a href="{{url('/cart/add')}}/{{$joma_product->id_prod}}" class="btn btn-success btn-xs">Acheter</a>
 							</div>
 						</div>
 						@endforeach
+
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+
 			</div>
 		</div>
 		</div>
