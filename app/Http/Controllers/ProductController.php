@@ -68,10 +68,10 @@ class ProductController extends Controller
     }
 
 
-    public function show($id_prod)
+    public function show($id)
     {
-        $products = Product::findOrFail($id_prod);
-        $products->select('id_prod', 'nom', 'prix_unite','description','categories_id')->findOrFail($id_prod);
+        $products = Product::findOrFail($id);
+        $products->select('id', 'nom', 'prix_unite','description','categories_id')->findOrFail($id);
         return view('product.show', compact('products'));
     }
 
@@ -89,23 +89,29 @@ class ProductController extends Controller
 
     public function update(Request $request, $id_prod)
     {
-        $products = new Product();
-        $data = $this->validate($request, [
-            'nom'=>'required',
-            'prix_unite'=>'required',
-            'description'=>'required',
-            'img'=> 'nullable',
-            'categories_id'=>'required',
+        // $products = new Product();
+        $products = Product::all(); //TEST ID IL SORT DE OU CE FDP
 
-        ]);
-        $data['id_prod'] = $id_prod;
+        $products = Product::where('id_prod',  '=', $id_prod)->first(); //TEST ID IL SORT DE OU CE FDP
 
-        $products = $products->find($data['id_prod']);
-        $products->prix_unite = $data['prix_unite'];
-        $products->description = $data['description'];
-        $products->nom = $data['nom'];
-        $products->categories_id = $data['categories_id'];
 
+        // $data = $this->validate($request, [
+        //     'nom'=>'required',
+        //     'prix_unite'=>'required',
+        //     'description'=>'required',
+        //     'img'=> 'nullable',
+        //     'categories_id'=>'required',
+
+        // ]);
+
+
+        // $data['id'] = $id;
+
+        // $products = $products->find($data['id']);
+        // $products->prix_unite = $data['prix_unite'];
+        // $products->description = $data['description'];
+        // $products->nom = $data['nom'];
+        // $products->categories_id = $data['categories_id'];
 
 
    if ($request->hasFile('files_img')) {
@@ -117,7 +123,9 @@ class ProductController extends Controller
                 $filename = ('../img/') . $filename;
                 $products->img = $filename;
             }
-        $products->save();
+
+        // $products->save();
+        $products->update($request->all());   //TEST ID IL SORT DE OU CE FDP
 
         return redirect('/product')->with('flash_message', 'Produit mis à jour!');
     }

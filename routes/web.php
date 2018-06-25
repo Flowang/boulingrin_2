@@ -63,8 +63,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('fiches/create','FicheController@store');
     
     
-    Route::get('product/{id}/edit','ProductController@edit');
-    Route::patch('product/{id}/update','ProductController@update');
+    Route::get('product/{id_prod}/edit','ProductController@edit');
+    Route::patch('product/{id_prod}/update','ProductController@update');
 
     Route::get('fiches/edit/{id}','FicheController@edit');
     Route::patch('fiches/update/{id}','FicheController@update');
