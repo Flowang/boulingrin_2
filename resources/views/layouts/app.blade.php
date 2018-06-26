@@ -36,9 +36,14 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
+                  
                     <!-- Right Side Of Navbar -->
+                   
+                       <a href="{{url('cart')}}" class="cd-cart">
+                            <span>{{Cart::count()}}</span>
+                        </a>
                     <ul class="navbar-nav ml-auto">
+                     
                         <!-- Authentication Links -->
                         @guest
                             <li><a class="nav-link" href="{{ url('/login') }}">Login</a></li>

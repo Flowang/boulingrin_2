@@ -42,14 +42,13 @@ Route::get('test',function()
     Cart::add('293ad', 'Product 1', 1, 9.99);
 });
 
-Route::get('cart',function()
-{
-    return Cart::content();
+Route::get('/carting', function () {
+    return view('cart.index');
 });
 
-Route::get('total',function(){
-    return Cart::total();
-});
+Route::get('cart','CartController@index');
+Route::get('cart/add/{id}','CartController@addItem');
+Route::get('cart/remove/{id}','CartController@removeItem');
 
 
 //Product with ajax

@@ -28,30 +28,10 @@ class DatabaseSeeder extends Seeder
             'roles_id' => '1',
         ]);
 
-   DB::table('jomas')->insert([
-            'joma' => 'lundi matin',
-        ]);
-           DB::table('jomas')->insert([
-            'joma' => 'lundi après-midi',
-        ]);
-           DB::table('jomas')->insert([
-            'joma' => 'mardi matin',
-        ]);
-            DB::table('jomas')->insert([
-            'joma' => 'mardi après-midi',
-        ]);
-           DB::table('jomas')->insert([
+        DB::table('jomas')->insert([
             'joma' => 'mercredi matin',
         ]);
-              DB::table('jomas')->insert([
-            'joma' => 'mercredi après-midi',
-        ]);
-           DB::table('jomas')->insert([
-            'joma' => 'jeudi matin',
-        ]);
-              DB::table('jomas')->insert([
-            'joma' => 'jeudi après-midi',
-        ]);
+
            DB::table('jomas')->insert([
             'joma' => 'vendredi matin',
         ]);
@@ -61,15 +41,7 @@ class DatabaseSeeder extends Seeder
            DB::table('jomas')->insert([
             'joma' => 'samedi matin',
         ]);
-            DB::table('jomas')->insert([
-            'joma' => 'samedi après-midi',
-        ]);
-           DB::table('jomas')->insert([
-            'joma' => 'dimanche matin',
-        ]);
-            DB::table('jomas')->insert([
-            'joma' => 'dimanche après-midi',
-        ]);
+
 
 
         DB::table('joma_users')->insert([
@@ -123,46 +95,46 @@ class DatabaseSeeder extends Seeder
 
         DB::table('products')->insert([
             'nom' => 'Pomme Verte',
-            'prix_unite' => '2',
-            'description' => 'Je suis une pomme 1',
+            'prix_unite' => '1',
+            'description' => 'Je suis une pomme verte',
             'users_id' => '1',
             'categories_id' => '1',
         ]);
         DB::table('products')->insert([
             'nom' => 'Pomme rouge',
             'prix_unite' => '2',
-            'description' => 'Je suis une pomme 2',
+            'description' => 'Je suis une pomme Rouge',
             'users_id' => '1',
             'categories_id' => '1',
         ]);
         DB::table('products')->insert([
-            'nom' => 'Pomme Jaune',
+            'nom' => 'Poivron',
             'prix_unite' => '4',
-            'description' => 'Je suis une pomme 3',
+            'description' => 'Je suis un poivron',
             'users_id' => '1',
-            'categories_id' => '1',
+            'categories_id' => '2',
         ]);
         DB::table('products')->insert([
-            'nom' => 'Pomme noire',
+            'nom' => 'Salade',
             'prix_unite' => '5',
-            'description' => 'Je suis une pomme 4',
+            'description' => 'Je suis une Salade',
             'users_id' => '2',
-            'categories_id' => '1',
+            'categories_id' => '2',
         ]);
 
         DB::table('products')->insert([
-            'nom' => 'Pomme Verte',
-            'prix_unite' => '2',
-            'description' => 'Je suis une pomme 5',
+            'nom' => 'Saumon',
+            'prix_unite' => '8',
+            'description' => 'Je suis un saumon',
             'users_id' => '2',
-            'categories_id' => '1',
+            'categories_id' => '3',
         ]);
         DB::table('products')->insert([
-            'nom' => 'Pomme Verte',
-            'prix_unite' => '2',
-            'description' => 'Je suis une pomme 6',
+            'nom' => 'Poisson rouge',
+            'prix_unite' => '1500',
+            'description' => 'Je suis un poisson rouge',
             'users_id' => '2',
-            'categories_id' => '1',
+            'categories_id' => '3',
         ]);
 
 
@@ -181,6 +153,21 @@ class DatabaseSeeder extends Seeder
             'user_id' => '3',
             'description' => 'Je suis un passioné de poisson, jen mange tous les jours, cest la folie',
         ]);
+
+  DB::table('categories')->insert([
+            'libelle' => 'Fruits',
+        ]);
+          DB::table('categories')->insert([
+            'libelle' => 'Legumes',
+        ]);
+          DB::table('categories')->insert([
+            'libelle' => 'Poisson',
+        ]);
+          DB::table('categories')->insert([
+            'libelle' => 'Viandes',
+        ]);
+
+
 
 
     }

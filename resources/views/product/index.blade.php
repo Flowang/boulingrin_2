@@ -15,7 +15,7 @@
 								<h5 class="card-title">{{$product->nom}}</h5>
 								<h5 class="card-title">{{$product->prix_unite}}$</h5>
 								<p class="card-text">{{$product->description}}</p>
-								<a href="{{ route('product.edit', $product->id_prod) }}" class="btn btn-success btn-xs">Edit</a>
+								<a href="{{ route('product.edit', $product->id_prod) }}" class="btn btn-success btn-xs">Modifié</a>
 							</div>
 						</div>
 						@endforeach
