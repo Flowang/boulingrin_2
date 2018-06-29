@@ -5,16 +5,16 @@
 <!-- @include('joma.tourJs') -->
 <div class="lolilol">
 	<div class="row ">
-	<div class="col-md-1 search_bar_1"><a class="btn btn-primary" href="{{ url()->current() }}">Reset</a></div>
-	<div class="col-md-1 search_bar_1"><a class="btn btn-primary" id="findBtn">Rechercher</a></div>
-		<div class="col-md-3 search_bar">
-			<select class="form-control" id="cat_select"  >
-				<option value="">Choisir une catégorie</option>
-				@foreach($categories as $categorie)
-					<option id="cat{{$categorie->id_cat}}" value="{{$categorie->id_cat}}">{{$categorie->libelle}}</option>
-				@endforeach
-			</select> 
-		</div>
+		<div class="col-md-1 search_bar_1"><a class="btn btn-primary" href="{{ url()->current() }}">Reset</a></div>
+		<div class="col-md-1 search_bar_1"><a class="btn btn-primary" id="findBtn">Rechercher</a></div>
+			<div class="col-md-3 search_bar">
+				<select class="form-control" id="cat_select"  >
+					<option value="">Choisir une catégorie</option>
+					@foreach($categories as $categorie)
+						<option id="cat{{$categorie->id_cat}}" value="{{$categorie->id_cat}}">{{$categorie->libelle}}</option>
+					@endforeach
+				</select> 
+			</div>
 		<div class="col-md-3  search_bar">
 			<select class="form-control" id="com_select">
 				<option value="">Choisir un commerçant</option>
@@ -23,8 +23,7 @@
 				@endforeach
 			</select> 
 		</div>
-		<div class="col-md-3 search_bar">
-		</div>
+		<div class="col-md-3 search_bar"></div>
 	</div>
 </div>
 
@@ -39,7 +38,7 @@
 		<div id="productData">
 			<div class="row">
 						@foreach($joma_products as $joma_product)
-						<div class="card col-md-3 ">
+						<div class="card col-md-2 test_large">
 							<div class="card-body">
 							  <img class="card-img-top" src="{{$joma_product->img}}">
 								<h5 class="card-title">{{$joma_product->nom}}</h5>

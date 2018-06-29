@@ -49,7 +49,7 @@ Route::get('/carting', function () {
 Route::get('cart','CartController@index');
 Route::get('cart/add/{id}','CartController@addItem');
 Route::get('cart/remove/{id}','CartController@removeItem');
-
+Route::get('cart/update','CartController@update');
 
 //Product with ajax
 

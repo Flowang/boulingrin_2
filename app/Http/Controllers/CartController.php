@@ -27,4 +27,12 @@ public function removeItem($id)
         return back();
     }
 
+    public function update(Request $request)
+    {
+         $qty = $request->newQty;
+         $rowId = $request->rowID;
+
+        Cart::update($rowId,$qty);
+        echo "Panier mis à jour";
+    }
 }
