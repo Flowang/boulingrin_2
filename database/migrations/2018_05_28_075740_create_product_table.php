@@ -16,17 +16,17 @@ class CreateProductTable extends Migration
             $table->integer('prix_poids')->nullable();
             $table->string('img')->nullable();
             $table->text('description');
-            $table->integer('users_id')->unsigned();
-            $table->foreign('users_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
+            // $table->integer('users_id')->unsigned();
+            // $table->foreign('users_id')
+            // ->references('id')
+            // ->on('users')
+            // ->onDelete('cascade');
 
-            $table->integer('categories_id');
-            $table->foreign('categories_id')
-            ->references('id')
-            ->on('categories')
-            ->onDelete('cascade');
+            // $table->integer('categories_id');
+            // $table->foreign('categories_id')
+            // ->references('id')
+            // ->on('categories')
+            // ->onDelete('cascade');
             $table->timestamps();
         });
     }
