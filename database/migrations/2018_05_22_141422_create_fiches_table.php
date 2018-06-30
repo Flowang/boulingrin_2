@@ -11,7 +11,7 @@ class CreateFichesTable extends Migration
     public function up()
     {
         Schema::create('fiches', function (Blueprint $table) {
-            $table->increments('id')->unsigned()->unique();
+            $table->increments('id');
             $table->integer('user_id');
             $table->string('title');
             $table->text('description');

@@ -10,7 +10,7 @@ class CreateJomaUsersTable extends Migration
     public function up()
     {
         Schema::create('joma_users', function (Blueprint $table) {
-            $table->increments('id')->unsigned()->unique();
+            $table->increments('id');
             $table->integer('id_users')->unsigned();
             $table->foreign('id_users')
             ->references('id')

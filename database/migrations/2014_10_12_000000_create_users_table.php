@@ -23,8 +23,7 @@ class CreateUsersTable extends Migration
             ->foreign('roles_id')
             ->references('id')
             ->on('roles')
-            ->onDelete('cascade')
-            ->default(NULL);
+            ->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

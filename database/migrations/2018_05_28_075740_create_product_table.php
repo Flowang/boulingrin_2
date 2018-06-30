@@ -10,7 +10,7 @@ class CreateProductTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->increments('id_prod')->unsigned()->unique();
+            $table->increments('id_prod');
             $table->string('nom');
             $table->integer('prix_unite');
             $table->integer('prix_poids')->nullable();
