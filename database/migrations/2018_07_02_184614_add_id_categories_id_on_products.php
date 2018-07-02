@@ -13,7 +13,7 @@ class AddIdCategoriesIdOnProducts extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             $table->integer('categories_id');
             $table->foreign('categories_id')
             ->references('id')

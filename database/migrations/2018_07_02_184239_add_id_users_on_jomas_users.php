@@ -13,7 +13,7 @@ class AddIdUsersOnJomasUsers extends Migration
      */
     public function up()
     {
-        Schema::create('joma_users', function (Blueprint $table) {
+        Schema::table('joma_users', function (Blueprint $table) {
             $table->integer('id_users')->unsigned();
             $table->foreign('id_users')
             ->references('id')

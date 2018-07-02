@@ -13,7 +13,7 @@ class AddIdRolesIdOnUsers extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->integer('roles_id')->unsigned();
             $table->foreign('roles_id')
             ->references('id')
