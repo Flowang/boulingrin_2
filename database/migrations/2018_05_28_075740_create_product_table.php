@@ -10,7 +10,7 @@ class CreateProductTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->increments('id_prod')->nullable();
+            $table->increments('id_prod');
             $table->string('nom');
             $table->integer('prix_unite');
             $table->integer('prix_poids')->nullable();
@@ -21,7 +21,7 @@ class CreateProductTable extends Migration
 
 
         Schema::table('products', function (Blueprint $table) {
-            $table->UnsignedInteger('users_id')->nullable();
+            $table->UnsignedInteger('users_id');
             $table->foreign('users_id')
             ->references('id')
             ->on('users')
@@ -29,7 +29,7 @@ class CreateProductTable extends Migration
         });
 
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('categories_id')->unsigned()->nullable();
+            $table->integer('categories_id')->unsigned();
             $table->foreign('categories_id')
             ->references('id')
             ->on('categories')

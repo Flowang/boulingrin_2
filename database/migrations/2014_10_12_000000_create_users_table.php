@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id')->unsigned()->nullable();
+            $table->increments('id')->unsigned();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
 
 
         Schema::table('users', function (Blueprint $table) {
-            $table->UnsignedInteger('roles_id')->nullable();
+            $table->UnsignedInteger('roles_id');
             $table->foreign('roles_id')
             ->references('id')
             ->on('roles')
