@@ -15,7 +15,7 @@ class AddIdCategoriesIdOnProducts extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->foreign('categories_id')
-            ->references('id')
+            ->references('id_cat')
             ->on('categories')
             ->onDelete('cascade');
         });
