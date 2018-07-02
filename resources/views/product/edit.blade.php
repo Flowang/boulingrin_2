@@ -32,7 +32,7 @@
         </div>
 
      <div class="card-body">
-        <h5> {{ Form::label('files_img', 'Description du commerce' )}}
+        <h5> {{ Form::label('files_img', 'Image pour le produit' )}}
               {{ Form::file('files_img') }}
     </div>
 
