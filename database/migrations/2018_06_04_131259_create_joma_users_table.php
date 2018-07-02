@@ -14,15 +14,6 @@ class CreateJomaUsersTable extends Migration
             $table->integer('id_joma');
             $table->timestamps();
         });
-
-      Schema::table('joma_users', function (Blueprint $table) {
-            $table->integer('id_users')->unsigned();
-            $table->foreign('id_users')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
-        });
-
     }
 
 

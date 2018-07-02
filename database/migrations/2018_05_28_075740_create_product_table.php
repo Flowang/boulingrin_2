@@ -18,25 +18,6 @@ class CreateProductTable extends Migration
             $table->text('description');
             $table->timestamps();
         });
-
-
-        Schema::table('products', function (Blueprint $table) {
-            $table->UnsignedInteger('users_id');
-            $table->foreign('users_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
-        });
-
-        Schema::table('products', function (Blueprint $table) {
-            $table->integer('categories_id')->unsigned();
-            $table->foreign('categories_id')
-            ->references('id')
-            ->on('categories')
-            ->onDelete('cascade');
-        });
-
-
     }
 
 
