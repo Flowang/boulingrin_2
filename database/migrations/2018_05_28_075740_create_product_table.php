@@ -16,8 +16,13 @@ class CreateProductTable extends Migration
             $table->integer('prix_poids')->nullable();
             $table->string('img')->nullable();
             $table->text('description');
+            $table->UnsignedInteger('users_id');
+            $table->unsignedInteger('categories_id');
             $table->timestamps();
         });
+
+
+        
     }
 
 

@@ -13,6 +13,7 @@ class CreateJomaUsersTable extends Migration
             $table->increments('id');
             $table->integer('id_joma');
             $table->timestamps();
+            $table->unsignedInteger('id_users');
         });
     }
 

@@ -14,7 +14,6 @@ class AddIdUsersIdOnProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->UnsignedInteger('users_id');
             $table->foreign('users_id')
             ->references('id')
             ->on('users')
