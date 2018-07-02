@@ -24,8 +24,8 @@ class CreateUsersTable extends Migration
         });
 
 
-                Schema::table('users', function (Blueprint $table) {
-            $table->integer('roles_id')->unsigned();
+        Schema::table('users', function (Blueprint $table) {
+            $table->UnsignedInteger('roles_id')->nullable();
             $table->foreign('roles_id')
             ->references('id')
             ->on('roles')
