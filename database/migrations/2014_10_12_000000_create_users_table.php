@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
 
 
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('roles_id')
+            $table->foreign('roles_id')->unsigned()
             ->references('id')
             ->on('roles')
             ->onDelete('cascade');
