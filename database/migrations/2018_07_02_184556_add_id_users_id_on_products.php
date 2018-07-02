@@ -11,16 +11,16 @@ class AddIdUsersIdOnProducts extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::table('products', function (Blueprint $table) {
-            $table->integer('users_id')->unsigned();
-            $table->foreign('users_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::table('products', function (Blueprint $table) {
+    //         $table->integer('users_id')->unsigned();
+    //         $table->foreign('users_id')
+    //         ->references('id')
+    //         ->on('users')
+    //         ->onDelete('cascade');
+    //     });
+    // }
 
     /**
      * Reverse the migrations.
