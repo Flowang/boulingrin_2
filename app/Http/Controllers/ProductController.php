@@ -54,7 +54,7 @@ class ProductController extends Controller
                 $img = $request->file('featured_image');
                 $filename =  time() . '.' . $img->getClientOriginalExtension();
                 $location = public_path('img/' . $filename);
-                Image::make($img)->resize(800, 400)->save($location);
+                Image::make($img->getRealPath())->resize(800, 400)->save($location);
 
                 $filename = ('../img/') . $filename;
                 $products->img = $filename;

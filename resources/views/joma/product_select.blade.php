@@ -18,8 +18,8 @@
 		<div class="col-md-3  search_bar">
 			<select class="form-control" id="com_select">
 				<option value="">Choisir un commerçant</option>
-				@foreach($users as $users)
-					<option id="cat{{$users->id}}" value="{{$users->id}}">{{$users->name}}</option>
+				@foreach($users as $user)
+					<option id="cat{{$user->id}}" value="{{$user->id}}">{{$user->name}}</option>
 				@endforeach
 			</select> 
 		</div>
@@ -49,7 +49,6 @@
 							</div>
 						</div>
 						@endforeach
-
 			</div>
 		</div>
 		</div>

@@ -32,7 +32,7 @@
 function redirectTo(){
         var e = document.getElementById("joma_select");
         var strUser = e.options[e.selectedIndex].value;
-    window.location.href="http://127.0.0.1:8000/productlist/"+strUser;
+        window.location.href="{{url('/productlist')}}/"+strUser;
 }
 </script>
 

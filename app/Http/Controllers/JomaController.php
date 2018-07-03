@@ -30,7 +30,7 @@ class JomaController extends Controller
     $categories = Categorie::all();
     $users = User::all();
     $products = DB::table('products')->first();
-
+    $commercants = DB::table('joma_users')->get();
     
 
 
@@ -44,6 +44,6 @@ class JomaController extends Controller
         ->where('jomas.id','=',$joma->id)
         ->get();
 
-        return view('joma.product_select',compact('joma_products','joma','categories','users','products'));
+        return view('joma.product_select',compact('joma_products','joma','categories','users','products','commercants'));
     }
 }
