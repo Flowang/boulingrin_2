@@ -47,9 +47,39 @@
                                     <a class="dropdown-item" href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        Logout
+                                        Se déconnecter
                                     </a>
+                                    <a class="dropdown-item" href="{{ url('edit-profile') }}">
+                                        Mon Profil
+                                    </a>
+                                    @can('isCommerçant')
+                                     <a class="dropdown-item" href="{{ url('/product') }}">
+                                        Mes produits
+                                    </a>
+                                    @endcan
+                                    @can('isAdmin')
+                                     <a class="dropdown-item" href="{{ url('/product') }}">
+                                        Mes produits
+                                    </a>
+                                    @endcan
+                                     <a class="dropdown-item" href="{{ url('/order') }}">
+                                        Mes commandes
+                                    </a>
+                                    @can('isCommerçant')
+                                    <a class="dropdown-item" href="{{ url('/fiches') }}">
+                                        Ma fiche
+                                    </a>
+                                    @endcan
+                                     <a class="dropdown-item" href="{{ url('/joma') }}">
+                                        Boutique
+                                    </a>
+                                    @can('isAdmin')
+                                    <a class="dropdown-item" href="{{ url('/admin') }}">
+                                        Panel Administrateur
+                                    </a>
+                                    @endcan
 
+                                    
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

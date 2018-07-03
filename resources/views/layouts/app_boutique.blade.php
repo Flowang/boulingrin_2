@@ -67,6 +67,11 @@
                                         Mes produits
                                     </a>
                                     @endcan
+                                    @can('isAdmin')
+                                     <a class="dropdown-item" href="{{ url('/product') }}">
+                                        Mes produits
+                                    </a>
+                                    @endcan
                                      <a class="dropdown-item" href="{{ url('/order') }}">
                                         Mes commandes
                                     </a>
@@ -78,6 +83,12 @@
                                      <a class="dropdown-item" href="{{ url('/joma') }}">
                                         Boutique
                                     </a>
+                                    @can('isAdmin')
+                                    <a class="dropdown-item" href="{{ url('/admin') }}">
+                                        Panel Administrateur
+                                    </a>
+                                    @endcan
+
                                     
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                         @csrf
